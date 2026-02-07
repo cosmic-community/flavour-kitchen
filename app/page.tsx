@@ -9,15 +9,16 @@ export default async function HomePage() {
   ])
 
   // Pick the first recipe with a featured image for the hero
-  const heroRecipe = recipes.find((r) => r.metadata?.featured_image?.imgix_url)
+  const heroRecipe = recipes.find((r) => r.metadata.featured_image?.imgix_url)
+  const heroImageUrl = heroRecipe?.metadata.featured_image?.imgix_url
 
   return (
     <>
       {/* Hero Section */}
       <section className="relative h-[520px] overflow-hidden">
-        {heroRecipe?.metadata?.featured_image?.imgix_url ? (
+        {heroImageUrl ? (
           <img
-            src={`${heroRecipe.metadata.featured_image.imgix_url}?w=1600&h=1040&fit=crop&auto=format,compress`}
+            src={`${heroImageUrl}?w=1600&h=1040&fit=crop&auto=format,compress`}
             alt="Flavour Kitchen hero"
             width={1600}
             height={520}

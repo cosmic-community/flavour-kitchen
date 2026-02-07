@@ -20,7 +20,7 @@ export default function RecipeGrid({ recipes, categories }: RecipeGridProps) {
     // Filter by category
     if (activeCategory) {
       result = result.filter(
-        (recipe) => recipe.metadata?.category?.slug === activeCategory
+        (recipe) => recipe.metadata.category?.slug === activeCategory
       )
     }
 
@@ -29,8 +29,8 @@ export default function RecipeGrid({ recipes, categories }: RecipeGridProps) {
       const query = searchQuery.toLowerCase().trim()
       result = result.filter((recipe) => {
         const title = recipe.title.toLowerCase()
-        const description = (recipe.metadata?.description || '').toLowerCase()
-        const ingredients = (recipe.metadata?.ingredients || '').toLowerCase()
+        const description = (recipe.metadata.description ?? '').toLowerCase()
+        const ingredients = (recipe.metadata.ingredients ?? '').toLowerCase()
         return (
           title.includes(query) ||
           description.includes(query) ||
@@ -41,6 +41,10 @@ export default function RecipeGrid({ recipes, categories }: RecipeGridProps) {
 
     return result
   }, [recipes, searchQuery, activeCategory])
+
+  const activeCategoryTitle = activeCategory
+    ? categories.find((c) => c.slug === activeCategory)?.title
+    : undefined
 
   return (
     <div>
@@ -115,12 +119,12 @@ export default function RecipeGrid({ recipes, categories }: RecipeGridProps) {
         <>
           <p className="text-sm text-gray-400 mb-6">
             Showing {filteredRecipes.length} of {recipes.length} recipes
-            {activeCategory && (
+            {activeCategoryTitle && (
               <span>
                 {' '}
                 in{' '}
                 <span className="font-semibold text-amber-600">
-                  {categories.find((c) => c.slug === activeCategory)?.title}
+                  {activeCategoryTitle}
                 </span>
               </span>
             )}

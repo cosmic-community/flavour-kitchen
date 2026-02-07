@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${category.title} Recipes — Flavour Kitchen`,
-    description: category.metadata?.description || `Browse all ${category.title} recipes.`,
+    description: category.metadata.description ?? `Browse all ${category.title} recipes.`,
   }
 }
 
@@ -56,7 +56,7 @@ export default async function CategoryPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-extrabold text-charcoal-900 mb-3">
           {category.title} Recipes
         </h1>
-        {category.metadata?.description && (
+        {category.metadata.description && (
           <p className="text-lg text-gray-500">{category.metadata.description}</p>
         )}
         <p className="text-sm text-gray-400 mt-2">

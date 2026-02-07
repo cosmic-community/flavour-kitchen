@@ -10,6 +10,12 @@ export interface CosmicObject {
   modified_at?: string;
 }
 
+// Image type for featured images
+export interface CosmicImage {
+  url: string;
+  imgix_url: string;
+}
+
 // Category type
 export interface Category extends CosmicObject {
   metadata: {
@@ -27,10 +33,7 @@ export interface Recipe extends CosmicObject {
     servings?: number;
     ingredients?: string;
     instructions?: string;
-    featured_image?: {
-      url: string;
-      imgix_url: string;
-    };
+    featured_image?: CosmicImage;
     category?: Category;
   };
 }

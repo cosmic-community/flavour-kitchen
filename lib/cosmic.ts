@@ -2,10 +2,18 @@ import { createBucketClient } from '@cosmicjs/sdk'
 import type { Recipe, Category } from '@/types'
 import { hasStatus } from '@/types'
 
+const bucketSlug = process.env.COSMIC_BUCKET_SLUG
+const readKey = process.env.COSMIC_READ_KEY
+const writeKey = process.env.COSMIC_WRITE_KEY
+
+if (!bucketSlug) {
+  throw new Error('COSMIC_BUCKET_SLUG environment variable is required')
+}
+
 export const cosmic = createBucketClient({
-  bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
-  readKey: process.env.COSMIC_READ_KEY as string,
-  writeKey: process.env.COSMIC_WRITE_KEY as string,
+  bucketSlug,
+  readKey: readKey ?? '',
+  writeKey: writeKey ?? '',
 })
 
 export async function getAllRecipes(): Promise<Recipe[]> {

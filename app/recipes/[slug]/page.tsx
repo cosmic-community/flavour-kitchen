@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${recipe.title} — Flavour Kitchen`,
-    description: recipe.metadata?.description || 'A delicious recipe from Flavour Kitchen',
+    description: recipe.metadata.description ?? 'A delicious recipe from Flavour Kitchen',
   }
 }
 
@@ -36,8 +36,8 @@ export default async function RecipePage({ params }: PageProps) {
     notFound()
   }
 
-  const category = recipe.metadata?.category
-  const featuredImage = recipe.metadata?.featured_image
+  const category = recipe.metadata.category
+  const featuredImage = recipe.metadata.featured_image
 
   return (
     <article>
@@ -85,7 +85,7 @@ export default async function RecipePage({ params }: PageProps) {
       {/* Recipe Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Description */}
-        {recipe.metadata?.description && (
+        {recipe.metadata.description && (
           <p className="text-lg text-gray-600 leading-relaxed mb-8 border-l-4 border-amber-400 pl-4">
             {recipe.metadata.description}
           </p>
@@ -93,19 +93,19 @@ export default async function RecipePage({ params }: PageProps) {
 
         {/* Meta Info */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-          {recipe.metadata?.prep_time && (
+          {recipe.metadata.prep_time && (
             <div className="bg-cream-100 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Prep Time</p>
               <p className="text-charcoal-800 font-bold">{recipe.metadata.prep_time}</p>
             </div>
           )}
-          {recipe.metadata?.cook_time && (
+          {recipe.metadata.cook_time && (
             <div className="bg-cream-100 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Cook Time</p>
               <p className="text-charcoal-800 font-bold">{recipe.metadata.cook_time}</p>
             </div>
           )}
-          {recipe.metadata?.servings && (
+          {recipe.metadata.servings && (
             <div className="bg-cream-100 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Servings</p>
               <p className="text-charcoal-800 font-bold">{recipe.metadata.servings}</p>
@@ -122,7 +122,7 @@ export default async function RecipePage({ params }: PageProps) {
         {/* Two Column Layout for Ingredients and Instructions */}
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Ingredients */}
-          {recipe.metadata?.ingredients && (
+          {recipe.metadata.ingredients && (
             <div className="lg:col-span-1">
               <h2 className="text-2xl font-bold text-charcoal-900 mb-4 flex items-center gap-2">
                 <span className="text-amber-500">🧾</span> Ingredients
@@ -136,7 +136,7 @@ export default async function RecipePage({ params }: PageProps) {
           )}
 
           {/* Instructions */}
-          {recipe.metadata?.instructions && (
+          {recipe.metadata.instructions && (
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold text-charcoal-900 mb-4 flex items-center gap-2">
                 <span className="text-amber-500">👨‍🍳</span> Instructions

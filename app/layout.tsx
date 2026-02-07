@@ -14,7 +14,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const bucketSlug = process.env.COSMIC_BUCKET_SLUG as string
+  const bucketSlug = process.env.COSMIC_BUCKET_SLUG ?? ''
 
   return (
     <html lang="en">
