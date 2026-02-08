@@ -38,6 +38,18 @@ export interface Recipe extends CosmicObject {
   };
 }
 
+// About page type
+export interface AboutPage extends CosmicObject {
+  metadata: {
+    headline?: string;
+    intro?: string;
+    story_title?: string;
+    story_content?: string;
+    hero_image?: CosmicImage;
+    mission?: string;
+  };
+}
+
 // API response types
 export interface CosmicResponse<T> {
   objects: T[];

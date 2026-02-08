@@ -20,6 +20,12 @@ export default function Header() {
               Recipes
             </Link>
             <Link
+              href="/about"
+              className="text-sm font-medium text-gray-600 hover:text-amber-600 transition-colors"
+            >
+              About
+            </Link>
+            <Link
               href="/contact"
               className="text-sm font-medium text-gray-600 hover:text-amber-600 transition-colors"
             >
