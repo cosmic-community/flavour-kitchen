@@ -19,6 +19,12 @@ export default function Header() {
             >
               Recipes
             </Link>
+            <Link
+              href="/contact"
+              className="text-sm font-medium text-gray-600 hover:text-amber-600 transition-colors"
+            >
+              Contact
+            </Link>
             <a
               href="https://www.cosmicjs.com/docs"
               target="_blank"
